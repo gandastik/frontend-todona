@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const CreatePage = () => {
   const [createInput, setCreateInput] = useState("");
@@ -29,19 +29,29 @@ const CreatePage = () => {
       </h1>
       <div>
         <input
+          type="text"
           value={createInput}
           onChange={(e) => {
             setCreateInput(e.target.value);
           }}
+          placeholder="Todo..."
+          required
         />
         <input
-          value={createTime}
           type="datetime-local"
+          value={createTime}
           onChange={(e) => {
             setCreateTime(e.target.value);
           }}
+          required
         />
-        <button onClick={() => onCreate()}>Create</button>
+        <button
+          onClick={() => {
+            if (createInput.length !== 0 && createTime.length !== 0) onCreate();
+          }}
+        >
+          Create
+        </button>
       </div>
     </div>
   );

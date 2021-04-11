@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Card from "../components/todoCard";
-import EditPage from "../containers/editPage";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);

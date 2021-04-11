@@ -9,7 +9,7 @@ const ContactPage = () => {
         <figure class="fir-image-figure">
           <a
             class="fir-imageover"
-            rel="noopener"
+            rel="noreferrer"
             target="_blank"
             href="https://twitter.com/_davideast"
           >
@@ -22,6 +22,7 @@ const ContactPage = () => {
             <img
               class="fir-imageover-image fir-clickcircle"
               src="https://fir-rollup.firebaseapp.com/twitter-logo.png"
+              alt=""
             />
           </a>
           <figcaption>
