@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Card from "../components/doneCard";
 
 const DonePage = () => {
   const [doneTasks, setDoneTasks] = useState([]);
@@ -40,16 +41,15 @@ const DonePage = () => {
       >
         Done
       </h1>
-      <ul>
+      <div className="card-container">
         {doneTasks.map((task) => (
-          <li>
-            <span>{task.TaskName}</span>
-            <span>{task.time}</span>
-            <button onClick={() => onUndoneClick(task._id)}>Undone</button>
-            <button onClick={() => onDelClick(task._id)}>del</button>
-          </li>
+          <Card
+            detail={task}
+            onDel={() => onDelClick(task._id)}
+            onUndone={() => onUndoneClick(task._id)}
+          />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

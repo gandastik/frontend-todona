@@ -1,7 +1,7 @@
 import React from "react";
 import "./card.css";
 
-const Card = ({ onDone, onEdit, onDel, detail }) => {
+const Card = ({ onUndone, onDel, detail }) => {
   return (
     <div className="card">
       <div className="container">
@@ -15,11 +15,8 @@ const Card = ({ onDone, onEdit, onDel, detail }) => {
           </p>
         </div>
         <div className="btn-group">
-          <button title="Mark as Done" id="done" onClick={onDone}>
-            <i className="fas fa-check" />
-          </button>
-          <button title="Edit Task" id="edit" onClick={onEdit}>
-            <i className="fas fa-pen" />
+          <button title="Mark as Undone" id="unDone" onClick={onUndone}>
+            <i className="fas fa-undo" />
           </button>
           <button title="Delete" id="del" onClick={onDel}>
             <i className="fas fa-trash-alt" />

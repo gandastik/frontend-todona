@@ -44,9 +44,8 @@
   transition: all ease-in-out 100ms;
 }
 
-.btn-group #edit:hover {
-  /* background-color: #6c757c; */
-  background-color: #eeb03e;
+.btn-group #unDone:hover {
+  background-color: #2fa74e;
   color: white;
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Card from "../components/todoCard";
-// import "./style.css";
+import EditPage from "../containers/editPage";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);
@@ -51,24 +51,15 @@ const TodoPage = () => {
       </h1>
       <div className="card-container">
         {todos.map((task) => (
-          <Card
-            onDone={() => onDoneClick(task._id)}
-            onEdit={() => onEditClick(task._id)}
-            onDel={() => onDelClick(task._id)}
-            detail={task}
-          />
+          <div>
+            <Card
+              onDone={() => onDoneClick(task._id)}
+              onEdit={() => onEditClick(task._id)}
+              onDel={() => onDelClick(task._id)}
+              detail={task}
+            />
+          </div>
         ))}
-        {/* {todos.map((task) => (
-          <li key={task._id}>
-            <span>{task.TaskName} </span>
-            <span>{task.time}</span>
-            <button onClick={() => onDoneClick(task._id, true)}>✔</button>
-            <button type="button" onClick={() => onEditClick(task._id)}>
-              Edit
-            </button>
-            <button onClick={() => onDelClick(task._id)}>del</button>
-          </li>
-        ))} */}
       </div>
     </div>
   );
