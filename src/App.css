@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  width: 40vw;
+  min-width: 500px;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -40,4 +42,16 @@
 body {
   margin-top: 60px;
   background-color: #e5e5e5;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  margin: 0;
 }

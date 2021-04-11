@@ -1,11 +1,10 @@
 import React from "react";
-import './App.css';
-import TestApi from "./TestApi";
+import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/navbar/index";
 import contactPage from "./containers/contactPage";
 import createPage from "./containers/createPage";
-import donePage from  "./containers/donePage";
+import donePage from "./containers/donePage";
 import editPage from "./containers/editPage";
 import todoPage from "./containers/todoPage";
 
