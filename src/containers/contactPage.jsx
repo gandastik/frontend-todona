@@ -5,7 +5,7 @@ const ContactPage = () => {
   return (
     <div>
       <h1 style={{ fontSize: "48px", margin: "0.5rem 0" }}>Contact</h1>
-      <div>
+      <div className="card-container">
         <figure class="fir-image-figure">
           <a
             class="fir-imageover"
