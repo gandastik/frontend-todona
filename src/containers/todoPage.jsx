@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import Card from "../components/todoCard";
+import "./card.css";
+import { confirmAlert } from "react-confirm-alert";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);
@@ -33,13 +34,28 @@ const TodoPage = () => {
   };
 
   const onDelClick = (id) => {
-    axios.delete(`http://localhost:1000/api/task/${id}`).then(() => {
-      fetchTodoTasks();
+    confirmAlert({
+      title: "Confirm delete?",
+      message: "Are you sure you want to delete.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            axios.delete(`http://localhost:1000/api/task/${id}`).then(() => {
+              fetchTodoTasks();
+            });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => alert("Click No"),
+        },
+      ],
     });
   };
 
   return (
-    <div>
+    <div className="TodoPage">
       <h1
         style={{
           fontSize: "48px",
@@ -50,13 +66,41 @@ const TodoPage = () => {
       </h1>
       <div className="card-container">
         {todos.map((task) => (
-          <div>
-            <Card
-              onDone={() => onDoneClick(task._id)}
-              onEdit={() => onEditClick(task._id)}
-              onDel={() => onDelClick(task._id)}
-              detail={task}
-            />
+          <div className="card">
+            <div className="container">
+              <div className="info">
+                <h4 className="task">{task.TaskName}</h4>
+                <p className="time">
+                  {new Date(task.time).toLocaleString([], {
+                    dateStyle: "long",
+                    timeStyle: "short",
+                  })}
+                </p>
+              </div>
+              <div className="btn-group">
+                <button
+                  title="Mark as Done"
+                  id="done"
+                  onClick={() => onDoneClick(task._id)}
+                >
+                  <i className="fas fa-check" />
+                </button>
+                <button
+                  title="Edit Task"
+                  id="edit"
+                  onClick={() => onEditClick(task._id)}
+                >
+                  <i className="fas fa-pen" />
+                </button>
+                <button
+                  title="Delete"
+                  id="del"
+                  onClick={() => onDelClick(task._id)}
+                >
+                  <i className="fas fa-trash-alt" />
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>

@@ -20,11 +20,9 @@ const NavBar = () => {
             Contact
           </Link>
         </div>
-        <div>
-          <Link to="/create">
-            <button className="button">New Task</button>
-          </Link>
-        </div>
+        <Link to="/create">
+          <button className="button">New Task</button>
+        </Link>
       </div>
     </div>
   );

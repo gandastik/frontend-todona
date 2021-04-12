@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import Card from "../components/doneCard";
+import "./card.css";
 
 const DonePage = () => {
   const [doneTasks, setDoneTasks] = useState([]);
@@ -32,7 +32,7 @@ const DonePage = () => {
   };
 
   return (
-    <div>
+    <div className="DonePage">
       <h1
         style={{
           fontSize: "48px",
@@ -43,11 +43,35 @@ const DonePage = () => {
       </h1>
       <div className="card-container">
         {doneTasks.map((task) => (
-          <Card
-            detail={task}
-            onDel={() => onDelClick(task._id)}
-            onUndone={() => onUndoneClick(task._id)}
-          />
+          <div className="card">
+            <div className="container">
+              <div className="info">
+                <h4 className="task">{task.TaskName}</h4>
+                <p className="time">
+                  {new Date(task.time).toLocaleString([], {
+                    dateStyle: "long",
+                    timeStyle: "short",
+                  })}
+                </p>
+              </div>
+              <div className="btn-group">
+                <button
+                  title="Mark as Undone"
+                  id="unDone"
+                  onClick={() => onUndoneClick(task._id)}
+                >
+                  <i className="fas fa-undo" />
+                </button>
+                <button
+                  title="Delete"
+                  id="del"
+                  onClick={() => onDelClick(task._id)}
+                >
+                  <i className="fas fa-trash-alt" />
+                </button>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
