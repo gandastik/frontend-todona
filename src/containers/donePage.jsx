@@ -26,9 +26,10 @@ const DonePage = () => {
   };
 
   const onDelClick = (id) => {
-    axios.delete(`http://localhost:1000/api/task/${id}`).then(() => {
-      fetchDoneTasks();
-    });
+    if (window.confirm("Are you sure you wish to delete this task?"))
+      axios.delete(`http://localhost:1000/api/task/${id}`).then(() => {
+        fetchDoneTasks();
+      });
   };
 
   return (

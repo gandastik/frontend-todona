@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./card.css";
-import { confirmAlert } from "react-confirm-alert";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);
@@ -34,24 +33,10 @@ const TodoPage = () => {
   };
 
   const onDelClick = (id) => {
-    confirmAlert({
-      title: "Confirm delete?",
-      message: "Are you sure you want to delete.",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => {
-            axios.delete(`http://localhost:1000/api/task/${id}`).then(() => {
-              fetchTodoTasks();
-            });
-          },
-        },
-        {
-          label: "No",
-          onClick: () => alert("Click No"),
-        },
-      ],
-    });
+    if (window.confirm("Are you sure you wish to delete this task?"))
+      axios.delete(`http://localhost:1000/api/task/${id}`).then(() => {
+        fetchTodoTasks();
+      });
   };
 
   return (
