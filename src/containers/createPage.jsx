@@ -10,7 +10,7 @@ const CreatePage = () => {
 
   const onCreate = () => {
     axios
-      .post("http://localhost:1000/api/task", {
+      .post("https://backend-nodejs-todo.herokuapp.com/api/api/task", {
         TaskName: createInput,
         time: createTime,
       })

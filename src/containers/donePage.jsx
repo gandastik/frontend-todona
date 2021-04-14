@@ -11,7 +11,9 @@ const DonePage = () => {
 
   const fetchDoneTasks = () => {
     return axios
-      .get(`http://localhost:1000/api/tasks?isFinished=true`)
+      .get(
+        `https://backend-nodejs-todo.herokuapp.com/api/tasks?isFinished=true`
+      )
       .then((res) => {
         setDoneTasks(res.data);
       });
@@ -19,7 +21,9 @@ const DonePage = () => {
 
   const onUndoneClick = (id) => {
     axios
-      .put(`http://localhost:1000/api/task?id=${id}`, { isFinished: false })
+      .put(`https://backend-nodejs-todo.herokuapp.com/api/task?id=${id}`, {
+        isFinished: false,
+      })
       .then(() => {
         fetchDoneTasks();
       });
@@ -27,9 +31,11 @@ const DonePage = () => {
 
   const onDelClick = (id) => {
     if (window.confirm("Are you sure you wish to delete this task?"))
-      axios.delete(`http://localhost:1000/api/task/${id}`).then(() => {
-        fetchDoneTasks();
-      });
+      axios
+        .delete(`https://backend-nodejs-todo.herokuapp.com/api/task/${id}`)
+        .then(() => {
+          fetchDoneTasks();
+        });
   };
 
   return (

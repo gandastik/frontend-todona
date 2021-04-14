@@ -13,7 +13,9 @@ const TodoPage = () => {
 
   async function fetchTodoTasks() {
     return axios
-      .get(`http://localhost:1000/api/tasks?isFinished=false`)
+      .get(
+        `https://backend-nodejs-todo.herokuapp.com/api/tasks?isFinished=false`
+      )
       .then((res) => {
         console.log(res);
         setTodos(res.data);
@@ -26,7 +28,9 @@ const TodoPage = () => {
 
   const onDoneClick = (id) => {
     axios
-      .put(`http://localhost:1000/api/task?id=${id}`, { isFinished: true })
+      .put(`https://backend-nodejs-todo.herokuapp.com/api/task?id=${id}`, {
+        isFinished: true,
+      })
       .then(() => {
         fetchTodoTasks();
       });
@@ -34,9 +38,11 @@ const TodoPage = () => {
 
   const onDelClick = (id) => {
     if (window.confirm("Are you sure you wish to delete this task?"))
-      axios.delete(`http://localhost:1000/api/task/${id}`).then(() => {
-        fetchTodoTasks();
-      });
+      axios
+        .delete(`https://backend-nodejs-todo.herokuapp.com/api/task/${id}`)
+        .then(() => {
+          fetchTodoTasks();
+        });
   };
 
   return (

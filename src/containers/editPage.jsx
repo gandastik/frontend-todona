@@ -16,12 +16,14 @@ const EditPage = () => {
   });
 
   const fecthTasks = async () => {
-    const res = await axios.get(`http://localhost:1000/api/tasks/${id}`);
+    const res = await axios.get(
+      `https://backend-nodejs-todo.herokuapp.com/api/tasks/${id}`
+    );
     setTask(res.data);
   };
 
   const onSubmit = () => {
-    axios.put(`http://localhost:1000/api/task/?id=${id}`, {
+    axios.put(`https://backend-nodejs-todo.herokuapp.com/api/task/?id=${id}`, {
       TaskName: taskName,
       isFinished: task.isFinished,
       time: time,
